@@ -11,11 +11,11 @@
 
   "repository" : {
     "type" : "git",
-    "url" : "http://github.com/unixcharles/hubot.git"
+    "url" : "http://github.com/teambot/teambot.git"
   },
 
   "dependencies": {
-    "hubot": "1.1.4",
+    "hubot": "1.1.6",
     "hubot-scripts": "1.1.2",
     "optparse": "1.0.1"
   }
