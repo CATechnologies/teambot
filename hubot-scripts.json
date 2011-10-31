@@ -1,1 +1,6 @@
-["redis-brain.coffee", "tweet.coffee", "shipit.coffee"]
+["redis-brain.coffee", "tweet.coffee", "shipit.coffee", "quote.coffee" "adult.coffee", "google.coffee", "ascii.coffee", "haters.coffee", 
+ "remind.coffee", "auto-stache.coffee", "rubygems.coffee", "tweet.coffee", "bees.coffee", "keep-alive.coffee", "sendgrid.coffee", 
+ "uptime.coffee", "bing.coffee", "lastfm_np.coffee", "shipit.coffee", "directions.coffee", "likeaboss.coffee", "shorten.coffee", 
+ "weather.coffee", "dnsimple.coffee", "lolz.coffee", "sosearch.coffee", "webshot.coffee", "eight-ball.coffee", "meme_generator.coffee", 
+ "speak.coffee", "wolfram.coffee", "newrelic.coffee", "spotify.coffee", "wordnik.coffee", "gemwhois.coffee", "stocks.coffee", "xkcd.coffee"
+ "giftv.coffee", "polite.coffee", "sudo.coffee"]
