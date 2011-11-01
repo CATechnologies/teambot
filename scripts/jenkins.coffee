@@ -3,6 +3,7 @@
 # is it greeeeen?            - General status of the builds
 # is it red?                 - Pessimist version of 'is it green'
 # hubot build status         - Details build status
+# hubot build queue          - List the build queue
 
 module.exports = (robot) ->
   robot.hear /is it (gr[e]+?n|red)/i, (msg) ->
