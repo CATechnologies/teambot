@@ -1,9 +1,9 @@
 # Keep track of the beer count for our alcohol based reward system
 # Break the test? loose a beer! Fix an obscure bug? get a beer!
 #
-# <user> beers count + 1
-# <user> beers count - 1
-# give me <user> beers count
+# <user> beers count + <int>      - Add beers to the user
+# <user> beers count - 1          - Remove beers to the user
+# give me <user> beers count      - Return the beer count for the user
 
 module.exports = (robot) ->
   robot.respond /(\w+)\sbeer.+\s(-|\+)[.+]?(\d+)/i, (msg) ->
