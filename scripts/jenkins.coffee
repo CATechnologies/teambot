@@ -4,7 +4,7 @@
 # build status               - Details build status
 
 module.exports = (robot) ->
-  robot.hear /is it gre+n/i, (msg) ->
+  robot.hear /is it (gr[e]+?n|red)/i, (msg) ->
     jenkinsRequest msg, (json) ->
       for job in json.jobs
         fail = true if job.color == 'red'
