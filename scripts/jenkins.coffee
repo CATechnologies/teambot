@@ -6,7 +6,7 @@
 
 module.exports = (robot) ->
   robot.hear /is it (gr[e]+?n|red)/i, (msg) ->
-    jenkinsRequest msg, (json) ->
+    jenkinsRequest msg, '/api/json', (json) ->
       for job in json.jobs
         fail = true if job.color == 'red'
 
@@ -16,14 +16,24 @@ module.exports = (robot) ->
         msg.send "Its GREEN!"
 
   robot.respond /[.+]?build status/i, (msg) ->
-    jenkinsRequest msg, (json) ->
+    jenkinsRequest msg, '/api/json', (json) ->
       for job in json.jobs
         if job.color == 'red'
           msg.send "#{job.name} is RED! #{job.url}"
         if job.color == 'blue'
           msg.send "#{job.name} is green."
 
-jenkinsRequest = (msg, callback) ->
+  robot.respond /[.+]?build queue/i, (msg) ->
+    jenkinsRequest msg, '/queue/api/json', (json) ->
+      console.log(json)
+      for item in json.items
+        color = if item.task.color == 'blue'
+          'green'
+        else
+          'red'
+        msg.send "#{item.task.name} was scheduled at #{ new Date(item.buildableStartMilliseconds) } and was #{color} before."
+
+jenkinsRequest = (msg, url, callback) ->
   domain   =  process.env.HUBOT_JENKINS_DOMAIN
   username =  process.env.HUBOT_JENKINS_USER
   password =  process.env.HUBOT_JENKINS_PASSWORD
@@ -35,7 +45,7 @@ jenkinsRequest = (msg, callback) ->
 
   auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
 
-  msg.http("http://#{domain}/api/json")
+  msg.http("http://#{domain}#{url}")
     .headers(Authorization: auth, Accept: 'application/json')
     .get() (err, res, body) ->
       if err or res.statusCode != 200
