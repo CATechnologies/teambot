@@ -25,13 +25,15 @@ module.exports = (robot) ->
 
   robot.respond /[.+]?build queue/i, (msg) ->
     jenkinsRequest msg, '/queue/api/json', (json) ->
-      console.log(json)
-      for item in json.items
-        color = if item.task.color == 'blue'
-          'green'
-        else
-          'red'
-        msg.send "#{item.task.name} was scheduled at #{ new Date(item.buildableStartMilliseconds) } and was #{color} before."
+      if json.items.length == 0
+        msg.send "The build queue is empty."
+      else
+        for item in json.items
+          color = if item.task.color == 'blue'
+            'green'
+          else
+            'red'
+          msg.send "#{item.task.name} was scheduled at #{ new Date(item.buildableStartMilliseconds) } and was #{color} before."
 
 jenkinsRequest = (msg, url, callback) ->
   domain   =  process.env.HUBOT_JENKINS_DOMAIN
