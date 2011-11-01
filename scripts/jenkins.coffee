@@ -1,7 +1,8 @@
 # Jenkins build status
 #
 # is it greeeeen?            - General status of the builds
-# build status               - Details build status
+# is it red?                 - Pessimist version of 'is it green'
+# hubot build status         - Details build status
 
 module.exports = (robot) ->
   robot.hear /is it (gr[e]+?n|red)/i, (msg) ->
