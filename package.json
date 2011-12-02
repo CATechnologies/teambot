@@ -15,7 +15,8 @@
   },
 
   "dependencies": {
-    "hubot": "https://github.com/github/hubot/tarball/master",
+    "hubot": ">= 2.0.5",
+    "hubot-talker": ">= 1.0.0",
     "hubot-scripts": ">= 1.1.4",
     "optparse": "1.0.1",
     "jsdom": ">= 0.2.9",
