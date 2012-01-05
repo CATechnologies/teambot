@@ -1,1 +1,1 @@
-app: bin/hubot -a talker -n Teambot
+app: bin/hubot -a talker -n teambot
