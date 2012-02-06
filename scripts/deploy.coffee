@@ -3,7 +3,7 @@
 # what hasn't been deployed  - General status of the builds
 
 module.exports = (robot) ->
-  robot.hear /deployed\?/i, (msg) ->
+  robot.hear /deployed/i, (msg) ->
     checkDeployedVersion msg, (json) ->
       msg.send "This hasn't been deployed:"
       msg.send json
