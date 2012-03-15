@@ -12,25 +12,25 @@
 # <text> ALL the <things>    - Generates ALL THE THINGS
 
 module.exports = (robot) ->
-  robot.respond /Y U NO (.+)/i, (msg) ->
+  robot.hear /Y U NO (.+)/i, (msg) ->
     caption = msg.match[1] || ""
 
     memeGenerator msg, 2, 166088, "Y U NO", caption, (url) ->
       msg.send url
 
-  robot.respond /(I DON'?T ALWAYS .*) (BUT WHEN I DO .*)/i, (msg) ->
+  robot.hear /(I DON'?T ALWAYS .*) (BUT WHEN I DO .*)/i, (msg) ->
     memeGenerator msg, 74, 2485, msg.match[1], msg.match[2], (url) ->
       msg.send url
 
-  robot.respond /(.*)(O\s?RLY\??.*)/i, (msg) ->
+  robot.hear /(.*)(O\s?RLY\??.*)/i, (msg) ->
     memeGenerator msg, 920, 117049, msg.match[1], msg.match[2], (url) ->
       msg.send url
 
-  robot.respond /(.*)(SUCCESS|NAILED IT.*)/i, (msg) ->
+  robot.hear /(.*)(SUCCESS|NAILED IT.*)/i, (msg) ->
     memeGenerator msg, 121, 1031, msg.match[1], msg.match[2], (url) ->
       msg.send url
 
-  robot.respond /(.*) (ALL the .*)/, (msg) ->
+  robot.hear /(.*) (ALL the .*)/, (msg) ->
     memeGenerator msg, 6013, 1121885, msg.match[1], msg.match[2], (url) ->
       msg.send url
 
@@ -60,7 +60,7 @@ memeGenerator = (msg, generatorID, imageID, text0, text1, callback) ->
     .get() (err, res, body) ->
       result = JSON.parse(body)['result']
       instanceURL = result['instanceUrl']
-      img = "http://memegenerator.net" + result['instanceImageUrl']
+      img = result['instanceImageUrl']
 
       msg.http(instanceURL).get() (err, res, body) ->
         # Need to hit instanceURL so that image gets generated
