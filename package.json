@@ -8,10 +8,10 @@
   },
 
   "dependencies": {
-    "hubot": ">= 2.1.2",
-    "hubot-talker": ">= 1.0.3",
+    "hubot": ">= 2.2.1",
+    "hubot-talker": ">= 1.0.6",
     "hubot-scripts": ">= 2.0.4",
-    "optparse": "1.0.1",
+    "optparse": "1.0.3",
     "jsdom": ">= 0.2.9",
     "hashlib": ">= 1.0.1",
     "wolfram": ">= 0.1.1",
